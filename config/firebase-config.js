@@ -1,14 +1,11 @@
-// backend/config/firebase-config.js
-
 const admin = require("firebase-admin");
 
-// Ladda din service account-nyckel
-const serviceAccount = require("../serviceAccountKey.json"); // Justera sökvägen!
+// Läs den hemliga nyckeln från miljövariabeln
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
-// Initiera Firebase Admin EN GÅNG med dina credentials
+// Initiera Firebase Admin
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
-// Exportera den färdiginitierade admin-instansen
 module.exports = admin;
