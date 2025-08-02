@@ -23,11 +23,11 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 // API-slutpunkter
 const courseRoutes = require("./routes/courses");
 const enrollmentRoutes = require("./routes/enrollments");
-const quizRoutes = require('./routes/quizzes'); // ✅ Importerar quiz-vägar
+const quizRoutes = require('./routes/quizzes');
 
 app.use("/api/courses", courseRoutes);
 app.use("/api/enrollments", enrollmentRoutes);
-app.use('/api/quizzes', quizRoutes); // ✅ Använder quiz-vägar
+app.use('/api/quizzes', quizRoutes);
 
 // Starta servern
 const PORT = process.env.PORT || 3000;
