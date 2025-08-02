@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Course = require('../models/course');
+const Course = require('../models/Course');
 const authenticate = require('../middleware/auth');
 
 const router = express.Router();
@@ -54,3 +54,4 @@ router.post('/:id/toggle-like', authenticate, async (req, res) => {
 });
 
 module.exports = router;
+
