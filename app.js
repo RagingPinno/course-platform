@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors({origin:'https://kursplattform.netlify.app/'}));
+app.use(cors({ origin: 'https://kursplattform.netlify.app' }));
 app.use(express.json()); 
 
 // Anslut till MongoDB
@@ -34,5 +34,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Servern körs på port ${PORT}`);
 });
+
 
 
