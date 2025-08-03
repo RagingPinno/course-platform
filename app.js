@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors({ origin: 'https://kursplattform.netlify.app' }));
+app.use(cors());
 app.use(express.json()); 
 
 // Anslut till MongoDB
@@ -23,19 +23,16 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 // API-slutpunkter
 const courseRoutes = require("./routes/courses");
 const enrollmentRoutes = require("./routes/enrollments");
-const quizRoutes = require('./routes/quizzes');
+const quizRoutes = require('./routes/quizzes'); // ✅ Importerar quiz-vägar
+const articleRoutes = require("./routes/articles");
 
 app.use("/api/courses", courseRoutes);
 app.use("/api/enrollments", enrollmentRoutes);
-app.use('/api/quizzes', quizRoutes);
+app.use('/api/quizzes', quizRoutes); // ✅ Använder quiz-vägar
+app.use('/api/articles', articleRoutes); // ✅ Använder artikel-vägar
 
 // Starta servern
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Servern körs på port ${PORT}`);
 });
-
-
-
-
-
