@@ -25,11 +25,13 @@ const courseRoutes = require("./routes/courses");
 const enrollmentRoutes = require("./routes/enrollments");
 const quizRoutes = require('./routes/quizzes'); // ✅ Importerar quiz-vägar
 const articleRoutes = require("./routes/articles");
+const flashcardRoutes = require("./routes/flashcards");
 
 app.use("/api/courses", courseRoutes);
 app.use("/api/enrollments", enrollmentRoutes);
 app.use('/api/quizzes', quizRoutes); // ✅ Använder quiz-vägar
 app.use('/api/articles', articleRoutes); // ✅ Använder artikel-vägar
+app.use("/api/flashcards", flashcardRoutes);
 
 // Starta servern
 const PORT = process.env.PORT || 3000;
