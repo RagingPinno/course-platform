@@ -10,8 +10,9 @@ const courseSchema = new mongoose.Schema({
     default: 'Kurs'
   },
   challengeSteps: [{
-    type: { type: String, enum: ['text', 'image'] },
-    content: { type: String }
+    // ✅ KORRIGERING: Lade till 'code' som ett giltigt alternativ i enum-listan.
+    type: { type: String, enum: ['text', 'image', 'code'], required: true },
+    content: { type: String, required: true }
   }],
   targetAudience: [String],
   tags: [String],
@@ -49,6 +50,5 @@ const courseSchema = new mongoose.Schema({
   timestamps: true 
 });
 
-// ✅ KORRIGERING: Kontrollera om modellen redan finns innan den skapas.
-// Detta förhindrar "OverwriteModelError".
+// Säkerställer att modellen inte skrivs över om den redan finns
 module.exports = mongoose.models.Course || mongoose.model("Course", courseSchema, "courses");
