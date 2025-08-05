@@ -15,8 +15,8 @@ if (!MONGO_URI) {
   process.exit(1);
 }
 
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("✅ Ansluten till MongoDB"))
+mongoose.connect(MONGO_URI)
+.then(() => console.log("✅ Ansluten till MongoDB"))
   .catch(err => console.error("❌ Kunde inte ansluta till MongoDB", err));
 
 
