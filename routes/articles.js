@@ -2,11 +2,14 @@ const express = require('express');
 const Article = require('../models/Article');
 const router = express.Router();
 
-// ✅ NY ROUTE: Hämta en lista över alla artiklar
+// Hämta en lista över alla artiklar
 router.get('/', async (req, res) => {
   try {
-    // Vi hämtar bara de fält som behövs för karusellen
-    const articles = await Article.find().select('title slug imageUrl');
+    // ✅ Hämtar nu BARA aktiva artiklar och sorterar dem
+    const articles = await Article.find({ isActive: true })
+      .select('title slug imageUrl')
+      .sort({ sortOrder: 1 }); 
+      
     res.json(articles);
   } catch (error) {
     console.error("Fel vid hämtning av artiklar:", error);
