@@ -12,10 +12,18 @@ const articleSchema = new mongoose.Schema({
   slug: { type: String, required: true, unique: true, index: true },
   introduction: { type: String },
   imageUrl: { type: String },
+  sortOrder: { 
+    type: Number,
+    default: 99
+  },
+  // ✅ Nytt fält för att styra synlighet
+  isActive: {
+    type: Boolean,
+    default: true
+  },
   events: [eventSchema]
 }, {
   timestamps: true
 });
 
-// Säkerställer att modellen inte skrivs över om den redan finns
 module.exports = mongoose.models.Article || mongoose.model('Article', articleSchema);
